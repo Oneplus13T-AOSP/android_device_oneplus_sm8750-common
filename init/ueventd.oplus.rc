@@ -21,6 +21,7 @@ subsystem adf
 
 # Display
 firmware_directories /mnt/vendor/persist/display/
+/sys/kernel/oplus_display/notify_fppress         0664    system    system
 
 # Memory
 /dev/block/bootdevice/by-name/ddr              0660    root    system
