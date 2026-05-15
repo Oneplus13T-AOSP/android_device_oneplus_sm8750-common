@@ -101,8 +101,13 @@ on late-fs
 
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
+
+on post-fs-data && property:ro.boot.product.vendor.sku=sun
     # Enable WLAN cold boot calibration
+    write /dev/kmsg "write /sys/kernel/cnss/fs_ready begin"
+    wait /sys/kernel/cnss/fs_ready
     write /sys/kernel/cnss/fs_ready 1
+    write /dev/kmsg "write /sys/kernel/cnss/fs_ready end"
 
 on early-boot
     setprop ro.surface_flinger.supports_background_blur ${vendor.display.supports_background_blur}
