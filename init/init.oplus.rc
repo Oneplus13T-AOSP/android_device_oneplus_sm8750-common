@@ -11,6 +11,26 @@ on fs
     # Update touchpanel firmware in case we ship newer firmware in /odm
     write /proc/touchpanel/tp_fw_update 0
 
+on init
+    # Osense
+    chown system system /proc/pressure/io
+    chmod 0664 /proc/pressure/io
+
+on boot
+    # Charger
+    chown system system /dev/oplus_chg
+    chown system system /sys/class/oplus_chg/battery/cool_down
+    chown system system /sys/class/oplus_chg/battery/ship_mode
+    chown system system /sys/class/oplus_chg/battery/bcc_current
+    chown system system /sys/class/oplus_chg/battery/bcc_parms
+    chown system system /sys/class/oplus_chg/battery/bcc_exception
+    chown system system /sys/class/oplus_chg/battery/bms_heat_temp_compensation
+    chown system system /sys/class/oplus_chg/usb/otg_switch
+
+    # Display
+    chown system system /dev/oplus_sync
+    chmod 0666 /dev/oplus_sync
+
 on post-fs-data
     # ADSP ramdump
     mkdir /data/vendor/mmdump 0777 system system
