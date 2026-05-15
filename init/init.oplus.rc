@@ -11,6 +11,16 @@ on fs
     # Update touchpanel firmware in case we ship newer firmware in /odm
     write /proc/touchpanel/tp_fw_update 0
 
+on init
+    # Osense
+    chown system system /proc/pressure/io
+    chmod 0664 /proc/pressure/io
+
+on boot
+    # Display
+    chown system system /dev/oplus_sync
+    chmod 0666 /dev/oplus_sync
+
 on post-fs-data
     # ADSP ramdump
     mkdir /data/vendor/mmdump 0777 system system

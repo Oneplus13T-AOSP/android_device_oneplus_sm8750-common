@@ -475,6 +475,8 @@ on property:sys.boot_completed=1
     setprop lmkd.reinit 1
     chown media audio /sys/kernel/aud_dev/state
     write /sys/devices/virtual/cvp/cvp/boot 1
+    chmod 400 /sys/devices/platform/soc/1d84000.ufshc/devfreq/1d84000.ufshc/max_freq
+    chmod 400 /sys/devices/platform/soc/1d84000.ufshc/devfreq/1d84000.ufshc/min_freq
 
 on property:persist.vendor.radio.atfwd.start=false
     stop vendor.atfwd
@@ -557,9 +559,12 @@ service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     group system inet net_admin wifi
     capabilities NET_ADMIN
 
-on property:sys.shutdown.requested=*
-    write /sys/kernel/shutdown_wlan/shutdown 1
-    stop cnss-daemon
+#ifdef OPLUS_FEATURE_WIFI_SWITCH
+#lixiong2@CONNETIVITY.HARDWARE.WIFI.SWITCH.9297244, Add for: Disable uninstalling WiFi driver when the 8735 is shutdown
+#on property:sys.shutdown.requested=*
+#    write /sys/kernel/shutdown_wlan/shutdown 1
+#    stop cnss-daemon
+#endif
 
 service ssgqmigd /vendor/bin/ssgqmigd
     class late_start
