@@ -62,7 +62,12 @@
 # Firmware directory Path
 # Below macro will be read by uevent and path will
 # be added to search path for firmware loading
-firmware_directories /vendor/firmware_mnt/image/
+# ifndef OPLUS_FEATURE_WIFI_BDF
+# lixiong2@CONNECTIVITY.WIFI.HARDWARE.BDF.7516716, 2024.7.1, modify for 8750
+# firmware_directories /vendor/firmware_mnt/image/
+# else /* OPLUS_FEATURE_WIFI_BDF */
+firmware_directories /mnt/vendor/persist/copy/ /odm/etc/wifi/ /mnt/vendor/persist/ /vendor/firmware_mnt/image/
+# endif /* OPLUS_FEATURE_WIFI_BDF */
 
 subsystem dma_heap
     devname uevent_devpath
