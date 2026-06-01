@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 13 (CPH2653_16.0.7.201(EX01)).
+## are from OnePlus 13T (PKX110_16.0.7.200(CN01)).
 
 # CNE
 vendor/app/CACertService/CACertService.apk
@@ -139,11 +139,6 @@ vendor/lib64/vendor.libdpmfdmgr.so
 vendor/lib64/vendor.libdpmframework.so
 vendor/lib64/vendor.libdpmtcm.so
 vendor/lib64/vendor.qti.hardware.dpmaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
-
-# eSIM
-odm/bin/hw/vendor.oplus.hardware.esim@1.0-service
-odm/etc/init/esim@1.0-service.rc
-odm/etc/vintf/manifest/manifest_oplus_esim.xml
 
 # Fingerprint
 odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service_uff
@@ -338,11 +333,13 @@ odm/etc/vintf/manifest/device_manifest_communication_center_aidl.xml
 odm/etc/vintf/manifest/device_manifest_subsys.xml
 odm/etc/QtiFtmPublicKey.pem
 odm/etc/oem_TDD-BYPASS_platfrom_license.pfm
+odm/etc/oem_TDD-BYPASS_platfrom_trail_license.pfm
 odm/etc/oem_asm2_tunner_platform_license.pfm
 odm/etc/oem_asm2_tunner_platform_trail_license.pfm
 odm/etc/oem_q_tunner_platform_license.pfm
 odm/etc/oem_q_tunner_platform_trail_license.pfm
-odm/etc/oem_stx_platform_license.pfm
+odm/etc/oem_qpm8590_qeb_platform_license.pfm
+odm/etc/oem_qpm8590_qeb_platform_trail_license.pfm
 odm/etc/plugin_config.xml
 odm/lib64/lib-virtual-modem-protos.so
 odm/lib64/libcommcenterfw.so
@@ -501,13 +498,14 @@ odm/bin/hw/android.hardware.secure_element-service.qti
 odm/etc/init/android.hardware.secure_element-service.qti.rc
 odm/etc/vintf/manifest/secure_element-service.xml
 odm/etc/vintf/manifest/secure_element_omapi_service.xml
-odm/etc/hal_uuid_map_config.xml:vendor/etc/hal_uuid_map_config.xml;SYMLINK=hal_uuid_map_23.xml,hal_uuid_map_29.xml,hal_uuid_map_31.xml;TRYSRCFIRST
+odm/etc/hal_uuid_map_config.xml:vendor/etc/hal_uuid_map_config.xml;SYMLINK=hal_uuid_map_7.xml;TRYSRCFIRST
 odm/lib64/libsecurity_event_olc_vnd.so
 vendor/lib64/hw/libEseUtils.so
 vendor/lib64/libGPMTEEC_vendor.so
 vendor/lib64/libGPQeSE.so
 vendor/lib64/libGPTEE_vendor.so
 vendor/lib64/libesesbprovision.so
+vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Soter
 system_ext/app/SoterService/SoterService.apk
