@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 13 (CPH2653_16.0.7.201(EX01)).
+## are from OnePlus 13T (PKX110_16.0.7.200(CN01)).
 
 # ACDBs
 vendor/etc/acdbdata/nn_vad_models/fai__3.0.0_0.0__eai_4.2_enpuv5.pmd
@@ -42,7 +42,6 @@ odm/etc/audio_algos_ver/OPREC_version.txt
 odm/etc/audio_algos_ver/OPSPT_Version.txt
 odm/etc/audio_algos_ver/OPSR_Version.txt
 odm/etc/audio_algos_ver/OPVE_Version.txt
-odm/etc/init/init.audio.rc
 odm/lib64/libSchedAssistExtImpl_vendor.so
 odm/lib64/libtfa98xx.so
 vendor/etc/models/acd/environment.eai
@@ -377,15 +376,23 @@ vendor/lib64/libmapperutils.so
 vendor/firmware/gen70900_aqe.fw
 vendor/firmware/gen70900_sqe.fw
 vendor/firmware/gen70900_zap.mbn
+vendor/firmware/gen70e00_sqe.fw
+vendor/firmware/gen70e00_zap.mbn
+vendor/firmware/gen71700_gmu.bin
 vendor/firmware/gen80000_aqe.fw
 vendor/firmware/gen80000_gmu.bin
 vendor/firmware/gen80000_sqe.fw
 vendor/firmware/gen80000_zap.mbn
+vendor/firmware/gen80600_gmu.bin
 vendor/firmware/gmu_gen70900.bin
 vendor/gpu/kbc/sequence_manifest.bin
+vendor/gpu/kbc/sequence_manifest_a730.bin
 vendor/gpu/kbc/unified_kbcs_32.bin
+vendor/gpu/kbc/unified_kbcs_32_a730.bin
 vendor/gpu/kbc/unified_kbcs_64.bin
+vendor/gpu/kbc/unified_kbcs_64_a730.bin
 vendor/gpu/kbc/unified_ksqs.bin
+vendor/gpu/kbc/unified_ksqs_a730.bin
 
 # Graphics (Vulkan)
 vendor/lib64/hw/vulkan.adreno.so
@@ -558,6 +565,7 @@ odm/lib64/libaiboost_ubwc.so
 
 # OPLUS Charger
 odm/bin/hw/gauged
+odm/bin/hw/ufcsd
 odm/bin/hw/vendor.oplus.hardware.charger-V10-service
 odm/bin/hw/wlschgd
 odm/etc/init/vendor.oplus.hardware.charger-V10-service.rc
@@ -981,6 +989,8 @@ vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 vendor/lib64/vendor.qti.hardware.vpp@1.3.so
 
 # VPU firmware
+vendor/firmware/vpu30_2v.mbn
+vendor/firmware/vpu30_2v_unsigned.mbn
 vendor/firmware/vpu33_4v.mbn
 vendor/firmware/vpu33_4v_unsigned.mbn
 vendor/firmware/vpu35_4v.mbn
@@ -999,7 +1009,10 @@ odm/etc/init/hw/init.oplus.wifi.rc
 odm/vendor/etc/wifi/WCNSS_qcom_cfg.ini
 vendor/bin/cnss-daemon
 vendor/etc/init/init.vendor.wlan.rc
+vendor/etc/wifi/kiwi_v2/WCNSS_qcom_cfg.ini
 vendor/etc/wifi/p2p_supplicant_overlay.conf
+vendor/etc/wifi/peach/WCNSS_qcom_cfg.ini
+vendor/etc/wifi/peach_v2/WCNSS_qcom_cfg.ini
 vendor/etc/wifi/vendor_cmd.xml
 vendor/etc/wifi/wpa_supplicant_overlay.conf
 
