@@ -113,6 +113,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libbase.so'),
     'vendor/lib64/libwfdmmsrc_proprietary.so': blob_fixup()
         .replace_needed('android.media.audio.common.types-V2-ndk.so', 'android.media.audio.common.types-V3-ndk.so'),
+    'system_ext/lib64/libwfdcommonutils.so': blob_fixup()
+        .remove_needed('libheif.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
