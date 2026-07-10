@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 13T (PKX110_16.0.8.300(CN01)).
+## are from OnePlus 13T (PKX110_16.0.9.400(CN01)).
 
 # ACDBs
 vendor/etc/acdbdata/nn_vad_models/fai__3.0.0_0.0__eai_4.2_enpuv5.pmd
@@ -565,9 +565,9 @@ odm/lib64/libaiboost_ubwc.so
 # OPLUS Charger
 odm/bin/hw/gauged
 odm/bin/hw/ufcsd
-odm/bin/hw/vendor.oplus.hardware.charger-V10-service
+odm/bin/hw/vendor.oplus.hardware.charger-V11-service
 odm/bin/hw/wlschgd
-odm/etc/init/vendor.oplus.hardware.charger-V10-service.rc
+odm/etc/init/vendor.oplus.hardware.charger-V11-service.rc
 odm/etc/vintf/manifest/manifest_oplus_charger_aidl.xml
 odm/etc/charge.cfg
 odm/lib64/libGaiaClient_vnd.so
