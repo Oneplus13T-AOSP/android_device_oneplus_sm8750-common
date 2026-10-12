@@ -566,6 +566,8 @@ odm/etc/init/vendor.oplus.hardware.charger-V12-service.rc
 odm/etc/vintf/manifest/manifest_oplus_charger_aidl.xml
 odm/etc/charge.cfg
 odm/lib64/libGaiaClient_vnd.so
+# Keep stock V12 separate from the unfrozen hardware/oplus V12 module.
+odm/lib64/vendor.oplus.hardware.charger-V12-ndk.so:odm/lib64/vendor.oplus.hardware.charger-V12-ndk_stock.so;FIX_SONAME
 
 # OPLUS Log Core
 odm/lib64/libolc_vnd.so

@@ -126,6 +126,11 @@ def fixup_dolby_vision_codecs(ctx, file, file_path, *args, **kwargs):
 
 
 blob_fixups: blob_fixups_user_type = {
+    # Use the matching stock interfaces without replacing hardware/oplus modules.
+    'odm/bin/hw/vendor.oplus.hardware.charger-V12-service': blob_fixup()
+        .replace_needed('vendor.oplus.hardware.charger-V12-ndk.so', 'vendor.oplus.hardware.charger-V12-ndk_stock.so'),
+    'odm/lib64/libqti-radio-service.so': blob_fixup()
+        .replace_needed('vendor.oplus.hardware.subsys_radio-V1-ndk.so', 'vendor.oplus.hardware.subsys_radio-V1-ndk_stock.so'),
     'odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service_uff': blob_fixup()
         .add_needed('libshims_aidl_fingerprint_v3.oplus.so'),
     (

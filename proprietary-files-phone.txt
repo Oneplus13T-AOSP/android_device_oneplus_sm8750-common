@@ -356,6 +356,8 @@ odm/lib64/libmindroid-app.so
 odm/lib64/libmindroid-framework.so
 odm/lib64/libortc_so.so
 odm/lib64/libqti-radio-service.so
+# COS17 resets the API version to V1 with a different interface.
+odm/lib64/vendor.oplus.hardware.subsys_radio-V1-ndk.so:odm/lib64/vendor.oplus.hardware.subsys_radio-V1-ndk_stock.so;FIX_SONAME
 odm/lib64/libradioapis.so
 odm/lib64/librfapis.so
 odm/lib64/libsubsys-utils.so
