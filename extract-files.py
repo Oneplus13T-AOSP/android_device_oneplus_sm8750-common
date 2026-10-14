@@ -125,6 +125,32 @@ def fixup_dolby_vision_codecs(ctx, file, file_path, *args, **kwargs):
     path.write_text(result)
 
 
+def fixup_codec2_store_allocation(ctx, file, file_path, *args, **kwargs):
+    """Match the COS 17 service allocations to PixelOS's 0x160-byte store."""
+    # These services allocate ComponentStore themselves before calling the
+    # source-built libcodec2_aidl constructor. COS uses 0x150 bytes, but the
+    # current class needs 0x160: its roster root/size occupy 0x150/0x158.
+    # Match malloc + argument setup + constructor call as well as the size.
+    # Reject other builds instead of silently leaving a heap overflow in place.
+    patterns = {
+        'vendor.qti.media.c2@1.0-service':
+            '002a805268040094e1230091f40300aa5f040094',
+        'vendor.qti.media.c2audio@1.0-service':
+            '002a8052c2070094e1230091f40300aab9070094',
+    }
+    path = Path(file_path)
+    original = bytes.fromhex(patterns[path.name])
+    # AArch64: mov w0, #0x150 -> mov w0, #0x160.
+    replacement = bytes.fromhex('002c8052') + original[4:]
+    data = path.read_bytes()
+    old_count, new_count = data.count(original), data.count(replacement)
+    if old_count == 0 and new_count == 1:
+        return
+    if old_count != 1 or new_count != 0:
+        raise ValueError(f'{path.name}: unexpected Codec2 store allocation; re-audit ABI')
+    path.write_bytes(data.replace(original, replacement, 1))
+
+
 blob_fixups: blob_fixups_user_type = {
     # Use the matching stock interfaces without replacing hardware/oplus modules.
     'odm/bin/hw/vendor.oplus.hardware.charger-V12-service': blob_fixup()
@@ -156,6 +182,11 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('lseek: 1'),
     'system_ext/lib64/libwfdservice.so': blob_fixup()
         .replace_needed('android.media.audio.common.types-V4-cpp.so', 'android.media.audio.common.types-V5-cpp.so'),
+    (
+        'vendor/bin/hw/vendor.qti.media.c2@1.0-service',
+        'vendor/bin/hw/vendor.qti.media.c2audio@1.0-service',
+    ): blob_fixup()
+        .call(fixup_codec2_store_allocation, need_tmp_dir=False),
     'vendor/bin/system_dlkm_modprobe.sh': blob_fixup()
         .regex_replace(r'.*\bzram or zsmalloc\b.*\n', '')
         .regex_replace(r'-e "zram" -e "zsmalloc"', ''),
