@@ -44,4 +44,22 @@
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
     <bool name="config_dozePulsePickup">true</bool>
 
+    <!-- The stock odm "fake" CameraX extensions provider jar
+         (/odm/framework/androidx.camera.extensions.impl.fake.jar) is a MediaTek-flavoured
+         CameraX extensions implementation that also contains the complete Kotlin stdlib.
+         Every app declaring <uses-library
+         androidx.camera.extensions.impl> gets that jar searched BEFORE its own code
+         (see LoadedApk.createSharedLibrariesLoaders), so kotlin.* resolves from the
+         provider jar instead of the app and causes NoSuchMethodError /
+         NoSuchFieldError at startup.
+         Listing the library here moves the provider dex after the application
+         code, so classes the app defines win. Nothing is removed from or
+         relocated inside the jar - the packages it defines are unchanged and
+         only the search order changes; classes the app does not define still
+         resolve from this jar. This does not add, rename, strip or replace any
+         blob. -->
+    <string-array name="config_sharedLibrariesLoadedAfterApp" translatable="false">
+        <item>androidx.camera.extensions.impl</item>
+    </string-array>
+
 </resources>
