@@ -119,6 +119,10 @@ vendor/lib64/libbluetooth_audio_session_aidl_qti.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
 
+# Camera extensions (stock fake provider, mirrors COS registration)
+odm/etc/permissions/fake_camera_extensions.xml
+odm/framework/androidx.camera.extensions.impl.fake.jar
+
 # CDSP
 vendor/bin/cdsprpcd
 vendor/etc/init/vendor.qti.cdsprpc-service.rc
